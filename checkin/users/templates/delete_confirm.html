@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <title>刪除打卡紀錄</title>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Baloo 2', cursive;
+      background-color: #FFF9ED;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .logo {
+      width: 200px;
+      margin-bottom: 40px;
+    }
+    .confirm-container {
+      max-width: 400px;
+      margin: auto;
+      background-color: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    h2 {
+      color: #E17C4D;
+      margin-bottom: 20px;
+    }
+    .btn {
+      padding: 10px 30px;
+      font-size: 18px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      margin: 10px;
+      color: white;
+    }
+    .btn-cancel {
+      background-color: #aaa;
+    }
+    .btn-delete {
+      background-color: #E17C4D;
+    }
+  </style>
+</head>
+<body>
+  <img src="{% static 'logo.png' %}" alt="Logo" class="logo">
+  <div class="confirm-container">
+    <h2>確定要刪除這筆打卡紀錄嗎？</h2>
+    <form method="post">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-delete">確定刪除</button>
+      <a href="{% url 'calendar_view' %}" class="btn btn-cancel">取消</a>
+    </form>
+  </div>
+</body>
+</html> 
